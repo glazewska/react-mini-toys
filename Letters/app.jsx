@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 
 document.addEventListener('DOMContentLoaded', function() {
 
-    class TextTyper extends React.Component {
+    class Letters extends React.Component {
         constructor(props) {
             super(props);
             this.state = {
-                currText: this.props.text.substr(0, 1),
+                currentText: this.props.text.substr(0, 1),
                 counter: 2
             };
         }
@@ -16,15 +16,14 @@ document.addEventListener('DOMContentLoaded', function() {
             this.intervalId = setInterval(() => {
                 this.setState({
                     counter: this.state.counter + 1,
-                    currText: this.props.text.substr(0, this.state.counter)
+                    currentText: this.props.text.substr(0, this.state.counter)
                 });
-
-            }, 400);
+            }, 300);
         }
 
         render() {
             return <h1>
-                {this.state.currText}
+                {this.state.currentText}
             </h1>;
         }
 
@@ -35,10 +34,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     class App extends React.Component {
         render() {
-            return <TextTyper text="This is fun!"/>;
+            return <Letters text='This is such a fun!'/>;
         }
     }
 
-    ReactDOM.render(
-        <App/>, document.getElementById('app'));
+ReactDOM.render(
+    <App/>, document.getElementById('app'));
+
 });
